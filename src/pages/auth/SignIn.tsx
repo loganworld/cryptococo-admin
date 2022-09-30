@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthObject } from "../../components/interfaces";
 import Action from "../../services";
@@ -38,6 +38,9 @@ export default function Login() {
                 case 200:
                     Toast("Successfully SignUp", "success");
                     break;
+                case 403:
+                    Toast("Account Not Allowed", "warn");
+                    break;
                 case 404:
                     Toast("Email or Password are wrong", "warn");
                     break;
@@ -49,6 +52,12 @@ export default function Login() {
             }
         } catch (err) {
             Toast("Network Error", "error");
+        }
+    };
+
+    const KeyEvent = (e: any) => {
+        if (e.key === "Enter") {
+            HandleSignIn();
         }
     };
 
@@ -72,6 +81,7 @@ export default function Login() {
                                         email: e.target.value,
                                     })
                                 }
+                                onKeyDown={KeyEvent}
                             />
                             <input
                                 type="password"
@@ -84,6 +94,7 @@ export default function Login() {
                                         password: e.target.value,
                                     })
                                 }
+                                onKeyDown={KeyEvent}
                             />
                         </div>
                         <div className="flex middle justify-between">

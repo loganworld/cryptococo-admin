@@ -119,11 +119,10 @@ export default function App() {
                             path="/alluser"
                             element={<PrivateRoute component={AllUser} />}
                         />
-                        {/* <Route
+                        <Route
                             path="/admin-manage"
                             element={<PrivateRoute component={Alladmins} />}
-                        /> */}
-                        <Route path="/admin-manage" element={<Alladmins />} />
+                        />
                         <Route
                             path="/profitchart"
                             element={<PrivateRoute component={ProfitChart} />}
