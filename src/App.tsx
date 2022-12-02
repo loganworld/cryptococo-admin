@@ -62,9 +62,9 @@ const PrivateRoute: React.FC<Props> = ({ component: RouteComponent }) => {
         //     dispatch({ type: "pageIndex", payload: 5 });
     }, [location.pathname]);
 
-    if (!state.auth.isAuth) {
-        return <Navigate to="/login" replace state={{ from: location }} />;
-    }
+    // if (!state.auth.isAuth) {
+    //     return <Navigate to="/login" replace state={{ from: location }} />;
+    // }
 
     return <RouteComponent />;
 };
